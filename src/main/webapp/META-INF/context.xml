@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/Viviengest">
+    <Resource 
+        maxTotal="-1"
+        name="jdbc/User"
+        auth="Container"
+        type="javax.sql.DataSource"
+        maxActive="100"
+        maxIdle="30"
+        maxWait="10000"
+        username="java2020"
+        password="2019"
+        driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/viviengest?
+    autoReconnect=true"/>
+</Context> 
