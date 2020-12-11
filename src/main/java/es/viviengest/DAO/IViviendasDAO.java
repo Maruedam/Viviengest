@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package es.viviengest.DAO;
-
-import es.viviengest.beans.Foto;
+ 
 import es.viviengest.beans.Vivienda;
 import java.util.List;
 
@@ -25,17 +24,9 @@ public interface IViviendasDAO {
 
     public void insertarVivienda(Vivienda v);
 
-    public void actualizarVivienda(Vivienda v);
+    public void actualizarVivienda(Vivienda v); 
 
-    public Foto getFotoVivienda(Long idVivienda);
-
-    public Vivienda getViviendaId(Long id);
-
-    public void insertarFotoVivienda(Foto foto);
-    
-    public List<Foto> getFotos();
-
-     public Boolean deleteFotoIdVivienda(Long id);
+    public Vivienda getViviendaId(Long id);   
              
     public void closeConnection();
 

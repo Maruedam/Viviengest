@@ -74,7 +74,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-4"> 
                                         <c:choose>
-                                            <c:when  test=" ${requestScope.viviendaAlquilar.getAscensor()}">  
+                                            <c:when  test=" ${requestScope.viviendaAlquilar.ascensor}">  
                                                 <label for="Ascensor"><h4>Ascensor: si</h4></label> 
                                             </c:when>
                                             <c:otherwise>
@@ -86,7 +86,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-4"> 
                                         <c:choose>
-                                            <c:when  test=" ${viviendaAlquilar.getCalefaccion()}"> 
+                                            <c:when  test=" ${requestScope.viviendaAlquilar.calefaccion}"> 
                                                 <label for="calefaccion"><h4>Calefacci&oacute;n: si</h4></label>
                                             </c:when>
                                             <c:otherwise>
@@ -98,7 +98,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-4">
                                         <c:choose>
-                                            <c:when  test=" ${viviendaAlquilar.getAireAcondicionado()}"> 
+                                            <c:when  test=" ${requestScope.viviendaAlquilar.aireAcondicionado}"> 
                                                 <label for="aire"><h4>Aire acondicionado: si</h4></label>
                                             </c:when>
                                             <c:otherwise>
@@ -110,7 +110,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-4">
                                         <c:choose>
-                                            <c:when  test=" ${viviendaAlquilar.getAmueblado()}"> 
+                                            <c:when  test=" ${requestScope.viviendaAlquilar.amueblado}"> 
                                                 <label for="Ascensor"><h4>Amueblado: si </h4></label>
                                             </c:when>
                                             <c:otherwise>

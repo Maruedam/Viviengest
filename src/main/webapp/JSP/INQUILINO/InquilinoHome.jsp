@@ -51,17 +51,11 @@
                         </div>
                     </div>
                     <div class="col-sm-8 box">
-                        <c:if test="${sessionScope.viviendaAlquiler!=null}">
-                            <c:set var = "nombre" scope = "page" value = "default.jpg"/> 
-                            <c:forEach var="foto" items="${sessionScope.fotos}">   
-                                <c:if test="${foto.getVivienda().getId().equals(sessionScope.viviendaAlquiler.getId())}">
-                                    <c:set var = "nombre" scope = "page" value = "${foto.getNombre()}"/> 
-                                </c:if>
-                            </c:forEach>
+                        <c:if test="${sessionScope.viviendaAlquiler!=null}"> 
                             <div class="col-md-4 col-sm-6  col-xs-12 casa">
                                 <div class="apartments-content">
                                     <div class="image-content">
-                                        <a><img class="img" src="IMAGENES/VIVIENDAS/${nombre}" alt="Foto de la vivienda"></a> 
+                                        <a><img class="img" src="IMAGENES/VIVIENDAS/${viviendaAlquiler.getFoto()}" alt="Foto de la vivienda"></a> 
                                     </div><!-- /.image-content -->
 
                                     <div class="row ">
@@ -78,18 +72,11 @@
                             </div>
                         </c:if>
                         <c:if test="${sessionScope.viviendaAlquiler==null}">
-                            <c:forEach var="vivienda" items="${sessionScope.viviendas}">
-                                <c:set var = "nombre" scope = "page" value = "default.jpg"/> 
-                                <c:forEach var="foto" items="${sessionScope.fotos}">   
-                                    <c:if test="${foto.getVivienda().getId().equals(vivienda.getId())}">
-                                        <c:set var = "nombre" scope = "page" value = "${foto.getNombre()}"/> 
-                                    </c:if>
-                                </c:forEach>
-
+                            <c:forEach var="vivienda" items="${sessionScope.viviendas}"> 
                                 <div class="col-md-4 col-sm-6  col-xs-12 casa">
                                     <div class="apartments-content">
                                         <div class="image-content">
-                                            <a><img class="img" src="IMAGENES/VIVIENDAS/${nombre}" alt="Foto de la vivienda"></a> 
+                                            <a><img class="img" src="IMAGENES/VIVIENDAS/${vivienda.getFoto()}" alt="Foto de la vivienda"></a> 
                                         </div><!-- /.image-content -->
 
                                         <div class="row ">

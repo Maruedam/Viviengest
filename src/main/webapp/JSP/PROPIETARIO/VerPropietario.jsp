@@ -51,7 +51,7 @@
 
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label for="telefono"> <h4>Tel&eacute;fono: ${sessionScope.usuario.getNombre()} </h4></label>
+                                        <label for="telefono"> <h4>Tel&eacute;fono: ${sessionScope.usuario.getTelefono()} </h4></label>
                                     </div>
                                 </div>
 

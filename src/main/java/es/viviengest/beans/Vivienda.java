@@ -22,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "viviendas")
-public class Vivienda {
+public class Vivienda implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -66,6 +66,8 @@ public class Vivienda {
     private Boolean estado;
     @Column(name = "comunidad")
     private Double comunidad;
+    @Column(name = "foto")
+    private String foto;
     @OneToOne
     @JoinColumn(name = "idPropietario", nullable = false)
     private Propietario propietario;
@@ -95,6 +97,14 @@ public class Vivienda {
     }
 
     public Vivienda() {
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
     
 

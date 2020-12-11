@@ -10,8 +10,7 @@ import es.viviengest.DAO.InquilinosDAO;
 import es.viviengest.DAO.PropietariosDAO;
 import es.viviengest.DAO.UsuariosDAO;
 import es.viviengest.DAO.ViviendasDAO;
-import es.viviengest.beans.Alquiler;
-import es.viviengest.beans.Foto;
+import es.viviengest.beans.Alquiler; 
 import es.viviengest.beans.Usuario;
 import es.viviengest.beans.Vivienda;
 import java.io.IOException;
@@ -51,8 +50,7 @@ public class RedireccionAdmin extends HttpServlet {
         PropietariosDAO pdao = new PropietariosDAO();
         InquilinosDAO idao = new InquilinosDAO();
         UsuariosDAO udao = new UsuariosDAO();
-        List<Vivienda> viviendas = new ArrayList<Vivienda>();
-        List<Foto> fotos = new ArrayList<Foto>();
+        List<Vivienda> viviendas = new ArrayList<Vivienda>(); 
         ViviendasDAO vdao = new ViviendasDAO();
         Vivienda vivienda = new Vivienda();
         List<Alquiler> alquileres= new ArrayList<Alquiler>();
@@ -105,10 +103,7 @@ public class RedireccionAdmin extends HttpServlet {
                 URL = "/JSP/ADMIN/AdminHome.jsp";
             } else if (nombre.startsWith("viviendael")) {
                 
-                viviendas = vdao.getViviendas();
-                fotos = vdao.getFotos();
-                sesion = request.getSession();
-                sesion.setAttribute("fotos", fotos);
+                viviendas = vdao.getViviendas();  
                 sesion = request.getSession();
                 sesion.setAttribute("viviendas", viviendas);
                 
@@ -131,10 +126,7 @@ public class RedireccionAdmin extends HttpServlet {
                     pdao.deletePropietario(usuario.getId()); 
                    viviendas=vdao.getVivienda(usuario.getId());
                     for (Vivienda vivienda1 : viviendas) {
-                        vdao.deleteVivienda(vivienda1.getId());
-                        if (vdao.deleteFotoIdVivienda(vivienda1.getId())!=null) {
-                            vdao.deleteFotoIdVivienda(vivienda1.getId());
-                        }  
+                        vdao.deleteVivienda(vivienda1.getId()); 
                     }
                 } else {
                     idao.deleteInquilino(usuario.getId());

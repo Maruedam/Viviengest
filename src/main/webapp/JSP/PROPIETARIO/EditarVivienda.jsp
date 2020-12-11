@@ -130,34 +130,34 @@
                                         <div class="col-xs-6">
 
                                             <label class="form-check-label" for="ascensor"><h4>Ascensor</h4></label>
-                                            <c:if test="${sessionScope.viviendaEditar.getAscensor()}">
+                                            <c:if test="${sessionScope.viviendaEditar.ascensor}">
                                                 <input type="checkbox" checked class="form-check-input" name="ascensor" id="ascensor"><br>
                                             </c:if>
-                                            <c:if test="${!sessionScope.viviendaEditar.getAscensor()}">
+                                            <c:if test="${!sessionScope.viviendaEditar.ascensor}">
                                                 <input type="checkbox" class="form-check-input" name="ascensor" id="ascensor"><br>
                                             </c:if>
                                             <label class="form-check-label" for="calefaccion"><h4>Calefaccion</h4></label>
-                                            <c:if test="${sessionScope.viviendaEditar.getCalefaccion()}">
+                                            <c:if test="${sessionScope.viviendaEditar.calefaccion}">
                                                 <input type="checkbox" checked class="form-check-input" name="calefaccion" id="calefaccion">
                                             </c:if>
-                                            <c:if test="${!sessionScope.viviendaEditar.getCalefaccion()}">
+                                            <c:if test="${!sessionScope.viviendaEditar.calefaccion}">
                                                 <input type="checkbox" class="form-check-input" name="calefaccion" id="calefaccion">
                                             </c:if>
 
                                         </div>
                                         <div class="col-xs-6">
                                             <label class="form-check-label" for="aireAcondicionado"><h4>Aire acondicionado</h4></label>
-                                            <c:if test="${sessionScope.viviendaEditar.getAireAcondicionado()}">
+                                            <c:if test="${sessionScope.viviendaEditar.aireAcondicionado}">
                                                 <input type="checkbox" checked class="form-check-input" name="aireAcondicionado" id="aireAcondicionado">
                                             </c:if>
-                                            <c:if test="${!sessionScope.viviendaEditar.getAireAcondicionado()}">
+                                            <c:if test="${!sessionScope.viviendaEditar.aireAcondicionado}">
                                                 <input type="checkbox" class="form-check-input" name="aireAcondicionado" id="aireAcondicionado">
                                             </c:if>
                                             <label class="form-check-label" for="amueblado"><h4>Amueblado</h4></label>
-                                            <c:if test="${sessionScope.viviendaEditar.getAmueblado()}">
+                                            <c:if test="${sessionScope.viviendaEditar.amueblado}">
                                                 <input type="checkbox" checked class="form-check-input" name="amueblado" id="amueblado">
                                             </c:if>
-                                            <c:if test="${!sessionScope.viviendaEditar.getAmueblado()}">
+                                            <c:if test="${!sessionScope.viviendaEditar.amueblado}">
                                                 <input type="checkbox" class="form-check-input" name="amueblado" id="amueblado">
                                             </c:if>
                                         </div>

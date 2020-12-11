@@ -74,54 +74,54 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <div class="col-xs-4"> 
-                                            <c:choose>
-                                                <c:when  test=" ${sessionScope.viviendaOpc.getAscensor()}">  
-                                                    <label for="Ascensor"><h4>Ascensor: si</h4></label> 
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <label for="Ascensor"><h4>Ascensor: no</h4></label>
-                                                </c:otherwise>
-                                            </c:choose> 
-                                        </div>
+                                      <div class="form-group">
+                                    <div class="col-xs-4"> 
+                                        <c:choose>
+                                            <c:when test="${sessionScope.viviendaVis.ascensor}">  
+                                                <label for="Ascensor"><h4>Ascensor: si</h4></label> 
+                                            </c:when>
+                                            <c:otherwise>
+                                                <label for="Ascensor"><h4>Ascensor: no</h4></label>
+                                            </c:otherwise>
+                                        </c:choose> 
                                     </div>
-                                    <div class="form-group">
-                                        <div class="col-xs-4"> 
-                                            <c:choose>
-                                                <c:when  test=" ${sessionScope.viviendaOpc.getCalefaccion()}"> 
-                                                    <label for="calefaccion"><h4>Calefacci&oacute;n: si</h4></label>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <label for="calefaccion"><h4>Calefacci&oacute;n: ${sessionScope.viviendaOpc.getCalefaccion()} no</h4></label>
-                                                </c:otherwise>
-                                            </c:choose> 
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-4"> 
+                                        <c:choose>
+                                            <c:when  test="${sessionScope.viviendaVis.calefaccion}"> 
+                                                <label for="calefaccion"><h4>Calefacci&oacute;n: si</h4></label>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <label for="calefaccion"><h4>Calefacci&oacute;n: no</h4></label>
+                                            </c:otherwise>
+                                        </c:choose> 
                                     </div>
-                                    <div class="form-group">
-                                        <div class="col-xs-4">
-                                            <c:choose>
-                                                <c:when  test=" ${sessionScope.viviendaOpc.getAireAcondicionado()}"> 
-                                                    <label for="aire"><h4>Aire acondicionado: si</h4></label>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <label for="aire"><h4>Aire acondicionado: no</h4></label>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-4">
+                                        <c:choose>
+                                            <c:when  test=" ${sessionScope.viviendaVis.getAireAcondicionado() }"> 
+                                                <label for="aire"><h4>Aire acondicionado: si</h4></label>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <label for="aire"><h4>Aire acondicionado: no</h4></label>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="col-xs-4">
-                                            <c:choose>
-                                                <c:when  test=" ${sessionScope.viviendaOpc.getAmueblado()}"> 
-                                                    <label for="Ascensor"><h4>Amueblado: si </h4></label>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <label for="Ascensor"><h4>Amueblado: no</h4></label>
-                                                </c:otherwise> 
-                                            </c:choose>
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-4">
+                                        <c:choose>
+                                            <c:when  test=" ${sessionScope.viviendaVis.amueblado}"> 
+                                                <label for="Ascensor"><h4>Amueblado: si </h4></label>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <label for="Ascensor"><h4>Amueblado: no</h4></label>
+                                            </c:otherwise> 
+                                        </c:choose>
                                     </div>
+                                </div>
                                     <div class="form-group">
                                         <div class="col-xs-4">
                                             <label for="direccionpostal"><h4>Tipo de suelo: ${sessionScope.viviendaOpc.getTipoDeSuelo()} </h4></label> 

@@ -6,8 +6,7 @@
 package es.viviengest.controllers;
 
 import es.viviengest.DAO.UsuariosDAO;
-import es.viviengest.DAO.ViviendasDAO;
-import es.viviengest.beans.Foto;
+import es.viviengest.DAO.ViviendasDAO; 
 import es.viviengest.beans.Propietario;
 import es.viviengest.beans.Usuario;
 import es.viviengest.beans.Vivienda;
@@ -45,8 +44,7 @@ public class RegistroVivienda extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         UsuariosDAO udao = new UsuariosDAO();
-        List<Vivienda> viviendas = new ArrayList<Vivienda>();
-        List<Foto> fotos = new ArrayList<Foto>();
+        List<Vivienda> viviendas = new ArrayList<Vivienda>(); 
         ViviendasDAO vdao = new ViviendasDAO();
         Propietario propietario = new Propietario();
         Usuario user = new Usuario();
@@ -113,17 +111,7 @@ public class RegistroVivienda extends HttpServlet {
             vivienda.setEstado(false);
             vivienda.setPagadoMes(false);
 
-            //insertamos la vivienda y obtenemos su id
-            vdao.insertarVivienda(vivienda);
-            viviendas = vdao.getViviendas();
-            Long total = null;
-            for (Vivienda vivienda1 : viviendas) {
-                total = vivienda1.getId();
-            }
-            vivienda = new Vivienda();
-            vivienda = vdao.getViviendaId(total);
-            request.setAttribute("viviendaVis", vivienda);
-            //introducimos las fotos en el servidor y la bbdd
+             //introducimos las fotos en el servidor y la bbdd
             String nombreImagen = "";
             String rutaImagen = "";
             Part filePart = request.getPart("foto");
@@ -134,21 +122,27 @@ public class RegistroVivienda extends HttpServlet {
                 rutaImagen = request.getServletContext().getRealPath("/IMAGENES/VIVIENDAS/" + nombreImagen);
                 System.out.println("rutaimagen " + rutaImagen);
                 filePart.write(rutaImagen);
-                Foto foto = new Foto();
-                foto.setNombre(nombreImagen);
-                foto.setVivienda(vivienda);
-                vdao.insertarFotoVivienda(foto);
             }
+            vivienda.setFoto(nombreImagen);
+            
+            //insertamos la vivienda y obtenemos su id
+            vdao.insertarVivienda(vivienda);
+            viviendas = vdao.getViviendas();
+            Long total = null;
+            for (Vivienda vivienda1 : viviendas) {
+                total = vivienda1.getId();
+            }
+            vivienda = new Vivienda();
+            vivienda = vdao.getViviendaId(total);
+            request.setAttribute("viviendaVis", vivienda);
+           
             //insertamos la vivienda en sesion
             //insertamos la sesion de las viviendas del propietario si es que tenga alaguna
 
             viviendas = vdao.getVivienda(propietario.getId());
-            fotos = vdao.getFotos();
  
             sesion = request.getSession();
             sesion.setAttribute("viviendas", viviendas);
-            sesion = request.getSession();
-            sesion.setAttribute("fotos", fotos);
             sesion = request.getSession();
 
             url = "/JSP/PROPIETARIO/VerVivienda.jsp";

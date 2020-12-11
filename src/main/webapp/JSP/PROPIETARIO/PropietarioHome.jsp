@@ -51,16 +51,11 @@
                     </div>
                     <div class="col-md-8 col-sm-12  box">
                         <c:forEach var="vivienda" items="${sessionScope.viviendas}">
-                            <c:set var = "nombre" scope = "page" value = "default.jpg"/> 
-                            <c:forEach var="foto" items="${sessionScope.fotos}">   
-                                <c:if test="${foto.getVivienda().getId().equals(vivienda.getId())}">
-                                    <c:set var = "nombre" scope = "page" value = "${foto.getNombre()}"/> 
-                                </c:if>
-                            </c:forEach> 
+                           
                             <div class="col-md-3 col-sm-6  col-xs-12 casa">
                                 <div class="apartments-content">
                                     <div class="image-content">
-                                        <a><img class="img" src="IMAGENES/VIVIENDAS/${nombre}" alt="Foto de la vivienda"></a> 
+                                        <a><img class="img" src="IMAGENES/VIVIENDAS/${vivienda.getFoto()}" alt="Foto de la vivienda"></a> 
                                     </div><!-- /.image-content -->
 
                                     <div class="row ">

@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package es.viviengest.DAO;
-
-import es.viviengest.beans.Foto;
+ 
 import es.viviengest.beans.Propietario;
 import es.viviengest.beans.Vivienda;
 import java.sql.Connection;
@@ -62,6 +61,7 @@ public class ViviendasDAO implements IViviendasDAO {
                 vivienda.setAnioContruccion(resultado.getInt("anio_contruccion"));
                 vivienda.setPagadoMes(resultado.getBoolean("pagado_mes"));
                 vivienda.setComunidad(resultado.getDouble("comunidad"));
+                vivienda.setFoto(resultado.getString("foto"));
                 p = pdao.getPropietario(resultado.getLong("idPropietario"));
                 vivienda.setPropietario(p);
                 
@@ -113,6 +113,7 @@ public class ViviendasDAO implements IViviendasDAO {
                 vivienda.setAnioContruccion(resultado.getInt("anio_contruccion"));
                 vivienda.setPagadoMes(resultado.getBoolean("pagado_mes"));
                 vivienda.setComunidad(resultado.getDouble("comunidad"));
+                vivienda.setFoto(resultado.getString("foto"));
                 p = pdao.getPropietario(resultado.getLong("idPropietario"));
                 vivienda.setPropietario(p);
                 
@@ -165,6 +166,7 @@ public class ViviendasDAO implements IViviendasDAO {
                 vivienda.setAnioContruccion(resultado.getInt("anio_contruccion"));
                 vivienda.setPagadoMes(resultado.getBoolean("pagado_mes"));
                 vivienda.setComunidad(resultado.getDouble("comunidad"));
+                vivienda.setFoto(resultado.getString("foto"));
                 p = pdao.getPropietario(resultado.getLong("idPropietario"));
                 vivienda.setPropietario(p); 
                 viviendas.add(vivienda);
@@ -214,6 +216,7 @@ public class ViviendasDAO implements IViviendasDAO {
                 vivienda.setAnioContruccion(resultado.getInt("anio_contruccion"));
                 vivienda.setPagadoMes(resultado.getBoolean("pagado_mes"));
                 vivienda.setComunidad(resultado.getDouble("comunidad"));
+                vivienda.setFoto(resultado.getString("foto"));
                 p = pdao.getPropietario(resultado.getLong("idPropietario"));
                 vivienda.setPropietario(p);
             }
@@ -256,7 +259,7 @@ public class ViviendasDAO implements IViviendasDAO {
     @Override
     public void insertarVivienda(Vivienda v) {
         conexion = ConnectionFactory.getConexionMYSQL();
-        String query1 = "insert into viviendas (direccion, c_postal,localidad,provincia,n_habitaciones,ascensor,calefaccion,aire_acondicionado, amueblado,tipo_de_suelo,n_banios,metros_cuadrados,minimo_meses,importe_mensual,importe_finaza,estado,anio_contruccion,pagado_mes,comunidad,idPropietario) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query1 = "insert into viviendas (direccion, c_postal,localidad,provincia,n_habitaciones,ascensor,calefaccion,aire_acondicionado, amueblado,tipo_de_suelo,n_banios,metros_cuadrados,minimo_meses,importe_mensual,importe_finaza,estado,anio_contruccion,pagado_mes,comunidad,foto,idPropietario) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pa = null;
         try {
             conexion.setAutoCommit(false);
@@ -280,7 +283,8 @@ public class ViviendasDAO implements IViviendasDAO {
             pa.setInt(17, v.getAnioContruccion());
             pa.setBoolean(18, v.getPagadoMes());
             pa.setDouble(19, v.getComunidad());
-            pa.setLong(20, v.getPropietario().getId());
+            pa.setString(20, v.getFoto());
+            pa.setLong(21, v.getPropietario().getId());
             pa.executeUpdate();
             
             conexion.commit();
@@ -296,7 +300,7 @@ public class ViviendasDAO implements IViviendasDAO {
     @Override
     public void actualizarVivienda(Vivienda v) {
         conexion = ConnectionFactory.getConexionMYSQL();
-        String query1 = "UPDATE viviendas SET direccion=?, c_postal=?,localidad=?,provincia=?,n_habitaciones=?,ascensor=?,calefaccion=?,aire_acondicionado=?, amueblado=?,tipo_de_suelo=?,n_banios=?,metros_cuadrados=?,minimo_meses=?,importe_mensual=?,importe_finaza=?,estado=?,anio_contruccion=?,pagado_mes=?,comunidad=?,idPropietario=? WHERE id=?";
+        String query1 = "UPDATE viviendas SET direccion=?, c_postal=?,localidad=?,provincia=?,n_habitaciones=?,ascensor=?,calefaccion=?,aire_acondicionado=?, amueblado=?,tipo_de_suelo=?,n_banios=?,metros_cuadrados=?,minimo_meses=?,importe_mensual=?,importe_finaza=?,estado=?,anio_contruccion=?,pagado_mes=?,comunidad=?,foto=?,idPropietario=? WHERE id=?";
         PreparedStatement pa = null;
         try {
             conexion.setAutoCommit(false);
@@ -320,8 +324,9 @@ public class ViviendasDAO implements IViviendasDAO {
             pa.setInt(17, v.getAnioContruccion());
             pa.setBoolean(18, v.getPagadoMes());
             pa.setDouble(19, v.getComunidad());
-            pa.setLong(20, v.getPropietario().getId());
-            pa.setLong(21, v.getId());
+            pa.setString(20, v.getFoto());
+            pa.setLong(21, v.getPropietario().getId());
+            pa.setLong(22, v.getId());
             pa.executeUpdate();
             
             conexion.commit();
@@ -333,111 +338,7 @@ public class ViviendasDAO implements IViviendasDAO {
             ConnectionFactory.closeConexion(conexion);
         }
     }
-
-    @Override
-    public Foto getFotoVivienda(Long idVivienda) {
-        conexion = ConnectionFactory.getConexionMYSQL();
-        Foto foto = null;
-        String consulta = "select * from fotos where idvivienda='" + idVivienda + "'";
-        
-        try {
-            conexion.setAutoCommit(false);
-            Statement sentencia = conexion.createStatement();
-            ResultSet resultado = sentencia.executeQuery(consulta);
-            
-            while (resultado.next()) {//si resultado que es lo obtenidod e la base de datos tiene usuarios entra en el while para rellenar la lista
-                foto = new Foto();
-                foto.setId(resultado.getLong("id"));
-                foto.setNombre(resultado.getString("nombre"));
-                foto.setVivienda(getViviendaId(idVivienda));
-            }
-            resultado.close();   
-            conexion.commit();
-        } catch (SQLException e) {
-            System.out.println("error al conectar");
-            e.printStackTrace();
-        } finally {
-            ConnectionFactory.closeConexion(conexion);
-        }
-        return foto;
-    }
-    @Override
-    public List<Foto> getFotos() {
-        conexion = ConnectionFactory.getConexionMYSQL();
-        Foto foto = null;
-        List<Foto> fotos = new ArrayList<Foto>();
-        Vivienda v = new Vivienda();
-        String consulta = "select * from fotos ";
-        
-        try {
-            conexion.setAutoCommit(false);
-            Statement sentencia = conexion.createStatement();
-            ResultSet resultado = sentencia.executeQuery(consulta);
-            
-            while (resultado.next()) {//si resultado que es lo obtenidod e la base de datos tiene usuarios entra en el while para rellenar la lista
-                foto = new Foto();
-                foto.setId(resultado.getLong("id"));
-                foto.setNombre(resultado.getString("nombre"));
-                foto.setVivienda(getViviendaId(resultado.getLong("idvivienda")));
-                fotos.add(foto);
-            }
-            resultado.close();  
-            conexion.close();
-        } catch (SQLException e) {
-            System.out.println("error al conectar");
-            e.printStackTrace();
-        } finally {
-            ConnectionFactory.closeConexion(conexion);
-        }
-        return fotos;
-    }
-    
-    @Override
-    public void insertarFotoVivienda(Foto foto) {
-        conexion = ConnectionFactory.getConexionMYSQL();
-        String query1 = "insert into fotos (nombre,idvivienda) values (?, ?)";
-        PreparedStatement pa = null;
-        try {
-            conexion.setAutoCommit(false);
-            pa = conexion.prepareStatement(query1);
-            pa.setString(1, foto.getNombre());
-            pa.setLong(2, foto.getVivienda().getId());
-            pa.executeUpdate();
-            
-            conexion.commit();
-            System.out.println("Se ha insertado correctamente en la bd");
-        } catch (SQLException ex) {
-            System.out.println("error al insertar ");
-            ex.printStackTrace();
-        } finally {
-            ConnectionFactory.closeConexion(conexion);
-        }
-    }
-    
-    @Override
-    public Boolean deleteFotoIdVivienda(Long id) {
-        conexion = ConnectionFactory.getConexionMYSQL();
-        
-        String query1 = "delete from fotos  WHERE idvivienda in(?)";
-        PreparedStatement p = null;
-        try {
-            conexion.setAutoCommit(false);
-            
-            p = conexion.prepareStatement(query1);
-            
-            p.setLong(1, id);
-            
-            p.executeUpdate();
-            conexion.commit();
-            System.out.println("Se ha eliminado la foto correctamente en la bd");
-        } catch (SQLException ex) {
-            System.out.println("error al eliminar");
-            ex.printStackTrace();
-        } finally {
-            ConnectionFactory.closeConexion(conexion);
-        }
-        return true;
-    }
+  
     @Override
     public void closeConnection() {
         //se cierra la conexion

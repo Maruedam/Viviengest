@@ -121,8 +121,7 @@ public class RedireccionInquilino extends HttpServlet {
                 String accion = request.getParameter(nombre);
                 if (accion.equals("Visualizar")) {
                     vivienda = vdao.getViviendaId(Long.valueOf(nombre));
-                    sesion = request.getSession();
-                    sesion.setAttribute("viviendaVis", vivienda);
+                    request.setAttribute("viviendaVis", vivienda);
                     URL = "/JSP/INQUILINO/VerViviendaInquilino.jsp";
                 } else if (accion.equals("Alquilar")){
                     vivienda = vdao.getViviendaId(Long.valueOf(nombre));

@@ -72,11 +72,11 @@
                                 <div class="form-group">
                                     <div class="col-xs-4"> 
                                         <c:choose>
-                                            <c:when test="${!requestScope.viviendaVis.ascensor}">  
+                                            <c:when test="${requestScope.viviendaVis.ascensor}">  
                                                 <label for="Ascensor"><h4>Ascensor: si</h4></label> 
                                             </c:when>
                                             <c:otherwise>
-                                                <label for="Ascensor"><h4>Ascensor: ${requestScope.viviendaVis.ascensor}no</h4></label>
+                                                <label for="Ascensor"><h4>Ascensor: no</h4></label>
                                             </c:otherwise>
                                         </c:choose> 
                                     </div>
@@ -84,11 +84,11 @@
                                 <div class="form-group">
                                     <div class="col-xs-4"> 
                                         <c:choose>
-                                            <c:when  test=" ${viviendaVis.calefaccion==true}"> 
+                                            <c:when  test="${requestScope.viviendaVis.calefaccion}"> 
                                                 <label for="calefaccion"><h4>Calefacci&oacute;n: si</h4></label>
                                             </c:when>
                                             <c:otherwise>
-                                                <label for="calefaccion"><h4>Calefacci&oacute;n: ${viviendaVis.calefaccion} no</h4></label>
+                                                <label for="calefaccion"><h4>Calefacci&oacute;n: no</h4></label>
                                             </c:otherwise>
                                         </c:choose> 
                                     </div>
@@ -96,7 +96,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-4">
                                         <c:choose>
-                                            <c:when  test=" ${viviendaVis.getAireAcondicionado()}"> 
+                                            <c:when  test=" ${requestScope.viviendaVis.getAireAcondicionado() }"> 
                                                 <label for="aire"><h4>Aire acondicionado: si</h4></label>
                                             </c:when>
                                             <c:otherwise>
@@ -108,7 +108,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-4">
                                         <c:choose>
-                                            <c:when  test=" ${viviendaVis.getAmueblado()}"> 
+                                            <c:when  test=" ${requestScope.viviendaVis.amueblado}"> 
                                                 <label for="Ascensor"><h4>Amueblado: si </h4></label>
                                             </c:when>
                                             <c:otherwise>

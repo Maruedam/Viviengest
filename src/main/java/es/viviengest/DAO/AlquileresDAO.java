@@ -193,7 +193,7 @@ public class AlquileresDAO implements IAlquileresDAO {
         ViviendasDAO vdao = new ViviendasDAO();
         InquilinosDAO idao = new InquilinosDAO();
         AlquiladaPor alquiladaPor = null;
-        String consulta = "select * from alquiladaPor where idvivienda='" + idvivienda + "'";
+        String consulta = "select * from alquiladapor where idvivienda='" + idvivienda + "'";
 
         try {
             conexion.setAutoCommit(false);
@@ -219,7 +219,7 @@ public class AlquileresDAO implements IAlquileresDAO {
 
     public void deleteAlquiladaPor(Long idvivienda) {
         conexion = ConnectionFactory.getConexionMYSQL();
-        String consulta = "delete from alquiladaPor where idvivienda in(?)";
+        String consulta = "delete from alquiladapor where idvivienda in(?)";
         PreparedStatement p = null;
         try {
             conexion.setAutoCommit(false);
@@ -241,7 +241,7 @@ public class AlquileresDAO implements IAlquileresDAO {
     
      public void insertarAlquiladaPor(AlquiladaPor alquiladaPor) {
          conexion = ConnectionFactory.getConexionMYSQL();
-        String query1 = "insert into alquiladaPor (idusuario, idvivienda) values (?, ?)";
+        String query1 = "insert into alquiladapor (idusuario, idvivienda) values (?, ?)";
         PreparedStatement pa = null;
         try {
             conexion.setAutoCommit(false);

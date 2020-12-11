@@ -10,8 +10,7 @@ import es.viviengest.DAO.InquilinosDAO;
 import es.viviengest.DAO.PropietariosDAO;
 import es.viviengest.DAO.UsuariosDAO;
 import es.viviengest.DAO.ViviendasDAO;
-import es.viviengest.beans.Alquiler;
-import es.viviengest.beans.Foto;
+import es.viviengest.beans.Alquiler; 
 import es.viviengest.beans.Propietario;
 import es.viviengest.beans.Usuario;
 import es.viviengest.beans.Inquilino;
@@ -62,8 +61,7 @@ public class LogIn extends HttpServlet {
         InquilinosDAO idao = new InquilinosDAO();
         Inquilino inquilino = new Inquilino();
         HttpSession sesion = request.getSession();
-        List<Usuario> usuarios = new ArrayList<Usuario>();
-        List<Foto> fotos = new ArrayList<Foto>(); 
+        List<Usuario> usuarios = new ArrayList<Usuario>(); 
         usuarios = userDAO.getUsuarios();
         AlquileresDAO adao = new AlquileresDAO();
         Alquiler alquiler = new Alquiler();
@@ -95,13 +93,11 @@ public class LogIn extends HttpServlet {
                                 sesion = request.getSession();
                                 sesion.setAttribute("viviendas", viviendas);
                             }
-                            fotos = vivDAO.getFotos();
+                            
                             sesion = request.getSession();
                             sesion.setAttribute("usuario", usuario);
                             sesion = request.getSession();
-                            sesion.setAttribute("propietario", propietario);
-                            sesion = request.getSession();
-                            sesion.setAttribute("fotos", fotos);
+                            sesion.setAttribute("propietario", propietario); 
                             
 
                             esta = true;
@@ -120,16 +116,7 @@ public class LogIn extends HttpServlet {
                                     sesion = request.getSession();
                                     sesion.setAttribute("viviendas", viviendas);
                                 }
-                            }
-
-                            /*
-                            
-                            hacer el if de si tiene vivienda mostrarla o sino muestra la lista de viviendas
-                            
-                             */
-                            fotos = vivDAO.getFotos();
-                            sesion = request.getSession();
-                            sesion.setAttribute("fotos", fotos);
+                            } 
                             sesion = request.getSession();
                             sesion.setAttribute("usuario", usuario);
                             sesion = request.getSession();
