@@ -9,4 +9,4 @@ _Para desplegar esta aplicación necesitas:_
 ### Instalación 🔧
 _El proceso de instalación lo podras encopntrar en la documentación_
 ### Autor ✏
-⌨️ por [Miguel Ángel Rueda] (https://github.com/Maruedam) 😊
+⌨️ por [Miguel Ángel Rueda] ( https://github.com/Maruedam )  😊
